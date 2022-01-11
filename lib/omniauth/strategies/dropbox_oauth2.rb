@@ -44,11 +44,7 @@ module OmniAuth
       end
 
       def callback_url
-        if @authorization_code_from_signed_request
-          ''
-        else
-          options[:callback_url] || super
-        end
+        full_host + script_name + callback_path
       end
     end
   end
