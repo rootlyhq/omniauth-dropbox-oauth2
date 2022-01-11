@@ -24,6 +24,12 @@ module OmniAuth
         { 'raw_info' => raw_info }
       end
 
+      def authorize_params
+        super.tap do |params|
+          params[:token_access_type] ||= 'offline'
+        end
+      end
+
       def raw_info
         return @raw_info if defined?(@raw_info)
 
