@@ -40,7 +40,7 @@ module OmniAuth
           faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
         end
         response = conn.post do |req|
-          req.url access_token.params['team_id'] ? '/2/team/get_info' : '/2/users/get_current_account'
+          req.url access_token.params['team_id'] ? '/2/team/token/get_authenticated_admin' : '/2/users/get_current_account'
           req.headers['Content-Type'] = 'application/json'
           req.headers['Authorization'] = "Bearer #{access_token.token}"
           req.body = "null"
