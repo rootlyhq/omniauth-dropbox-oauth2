@@ -10,13 +10,13 @@ module OmniAuth
         :token_url          => 'https://api.dropbox.com/oauth2/token'
       }
 
-      uid { raw_info['account_id'] || raw_info['team_id'] }
+      uid { raw_info.dig('admin_profile', 'account_id') || raw_info['account_id'] }
 
       info do
         {
-          'uid'   => raw_info['account_id'] || raw_info['team_id'],
-          'name'  => raw_info['name'] || raw_info['name']['display_name'],
-          'email' => raw_info['email']
+          'uid'   => raw_info.dig('admin_profile', 'account_id') || raw_info['account_id'],
+          'name'  => raw_info['name'] || raw_info.dig('admin_profile', 'name', 'display_name') || raw_info.dig('name', 'display_name'),
+          'email' => raw_info.dig('admin_profile', 'email') || raw_info['email']
         }
       end
 
