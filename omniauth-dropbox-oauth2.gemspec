@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.description = 'Dropbox OAuth2 strategy for OmniAuth 1.x'
   gem.summary     = gem.description
 
-  gem.add_dependency 'omniauth', '~> 1.5'
+  gem.add_dependency 'omniauth', '~> 2.0.0'
   gem.add_dependency 'omniauth-oauth2', '>= 1.4.0', '< 2.0'
 
   gem.add_development_dependency 'rake'
