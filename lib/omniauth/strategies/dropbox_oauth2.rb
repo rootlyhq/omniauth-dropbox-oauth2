@@ -6,7 +6,7 @@ module OmniAuth
       option :name, "dropbox_oauth2"
       option :client_options, {
         :site               => 'https://api.dropbox.com',
-        :authorize_url      => 'https://www.dropbox.com/oauth2/authorize',
+        :authorize_url      => 'https://api.dropbox.com/oauth2/authorize',
         :token_url          => 'https://api.dropbox.com/oauth2/token'
       }
 
@@ -50,7 +50,7 @@ module OmniAuth
       end
 
       def callback_url
-        full_host + script_name + callback_path
+        options.redirect_url || (full_host + callback_path)
       end
     end
   end
